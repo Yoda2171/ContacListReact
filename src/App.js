@@ -1,25 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+
+// import ScrollToTop from "./component/scrollToTop";
+
+import injectContext from "./store/appContext";
+
+import { Contacts } from "./views/Contacts.js";
+import { AddContact } from "./views/AddContact.js";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <div>
+			<BrowserRouter>
+				<div>
+					<Switch>
+						<Route exact path="/index.html" component={Contacts} />
+						<Route exact path="/" component={Contacts} />
+						<Route exact path="/contacts" component={Contacts} />
+						<Route exact path="/add" component={AddContact} />
+						<Route exact path="/edit" component={AddContact} />
+						<Route render={() => <h1 className="notfound">Not found!</h1>} />
+					</Switch>
+				</div>
+			</BrowserRouter>
+		</div>
   );
 }
 
-export default App;
+export default injectContext(App);
