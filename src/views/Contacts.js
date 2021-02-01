@@ -4,6 +4,7 @@ import { Link, useParams } from "react-router-dom";
 import { ContactCard } from "../component/ContactCard.js";
 import { Modal } from "../component/Modal";
 import { Context } from "../store/appContext.js";
+import { EditContact } from "./EditContact.js";
 
 export const Contacts = () => {
 
@@ -12,11 +13,7 @@ export const Contacts = () => {
 		
 
 	});
-	function dle(usuario) {
-		console.log(usuario)
-		setState({ showModal: true, id: usuario.id })
-
-	}
+	
 
 	return (
 		<div className="container">
@@ -28,12 +25,14 @@ export const Contacts = () => {
 				</p>
 				<div id="contacts" className="panel-collapse collapse show" aria-expanded="true">
 					<ul className="list-group pull-down" id="contact-list">
-						<ContactCard onDelete={(usuario) =>  setState({ showModal: true, id:usuario.id })}  />
+						<ContactCard onDelete={(usuario) =>  setState({ showModal: true, id:usuario.id})}  />
 
 					</ul>
 				</div>
 			</div>
 			<Modal id={state.id} show={state.showModal} onClose={() => setState({ showModal: false })} />
+			
+		
 		</div>
 	);
 };

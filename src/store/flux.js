@@ -7,10 +7,9 @@ const getState = ({ getStore, getActions, setStore }) => {
                 full_name: "",
                 phone: "",
                 address: "",
-
-
+                
             },
-            users: []
+            users: null
         },
         actions: {
             handleChange: (e) => {
@@ -26,9 +25,22 @@ const getState = ({ getStore, getActions, setStore }) => {
                 console.log("enviando el form...");
 
             },
-            /* eliminar: () => {
+            put: (id) => {
+                const store = getStore(); //llamo a  la store
+                const input = store.input;
+                
+                fetch(`https://assets.breatheco.de/apis/fake/contact/${id}`, {
+                    method: 'PUT',
+                    body: JSON.stringify(input),
+                    headers: {
+                        'content-type': 'application/json'
+                    }
+                })
+                    .then(resp => resp.json())
+                    .then(data => console.log(data))
+                
 
-            }, */
+            },
             post: () => {
                 const store = getStore(); //llamo a  la store
                 const input = store.input;
@@ -52,7 +64,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                         })
                     })
             },
-            /* erased: (id) => {
+            erased: (id) => {
                 const store = getStore(); //llamo a  la store
                 const users = store.users;
 
@@ -68,7 +80,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 
 
-            } */
+            }
 
 
         }

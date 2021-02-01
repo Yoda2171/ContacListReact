@@ -7,18 +7,10 @@ export const Modal = props => {
 	const { store, actions } = useContext(Context);
 	const [state, setState] = useState({
 		//initialize state here
+		
 	});
 
-	let erased = () => {
-		fetch(`https://assets.breatheco.de/apis/fake/contact/${props.id}`, {
-			method: 'DELETE',
-			headers: {
-				'content-type': 'application/json'
-			}
-		})
-			.then(resp => resp.json())
-			.then(data => console.log(data))
-	}
+	
 	
 	return (
 		<div className="modal" tabIndex="-1" role="dialog" style={{ display: props.show ? "inline-block" : "none" }}>
@@ -46,7 +38,7 @@ export const Modal = props => {
 						<button type="button" className="btn btn-primary">
 							Oh no!
 						</button>
-						<button type="button" className="btn btn-secondary" data-dismiss="modal" onClick={erased}>
+						<button type="button" className="btn btn-secondary" data-dismiss="modal" onClick={actions.erased(props.id)}>
 							Do it!
 						</button>
 					</div>

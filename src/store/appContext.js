@@ -18,8 +18,8 @@ const injectContext = PassedComponent => {
             // funciones a ejecutar cuando carga la pagina
             state.actions.post();
             state.actions.get();
-            
-            /* state.actions.erased(); */
+            state.actions.erased();
+            state.actions.put();
             
             
                 
